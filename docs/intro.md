@@ -1,8 +1,9 @@
 ---
+sidebar_label: 'The POCTES platform'
 sidebar_position: 1
 ---
 
-# Proof of Concept of Transactive Energy System (POCTES)
+# Introduction to the POCTES platform
 
 In the dynamic landscape of modern energy systems, the demand for innovative solutions that seamlessly integrate with existing infrastructure while providing adaptability, scalability, and interoperability is ever-increasing. Recognizing this imperative, we embarked on the journey to develop the Proof of Concept of Transactive Energy System (POCTES).
 
