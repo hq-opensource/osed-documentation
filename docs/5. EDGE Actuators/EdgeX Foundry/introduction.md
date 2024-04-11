@@ -3,7 +3,7 @@ sidebar_label: 'Introduction'
 sidebar_position: 1
 ---
 
-# OSED EdgeX Foundry Projects
+# OSED EdgeX Foundry Actuators
 The EdgeX Foundry Actuators project utilizes the open-source EdgeX Foundry framework, specializing in Internet of Things (IoT) edge computing, and extends its capabilities to better suit our requirements.
 
 ## Our Application Services
