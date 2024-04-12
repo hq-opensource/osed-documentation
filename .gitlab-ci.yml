@@ -1,18 +1,51 @@
-# The Docker image that will be used to build your app
-image: node:20.2-slim
-# Functions that should be executed before the build script is run
-before_script:
-  - mkdir ./public
-pages:
+stages:
+  - build
+  - package
+  - deploy
+
+# Build the documentation website
+build:
+  image: node:20-slim
+  stage: build
   script:
     - yarn install
     - yarn build
+  artifacts:
+    untracked: true
+  when: always
+  tags:
+    - $RUNNERTAG
+
+# Create a containter with the documentation
+docker:
+  image: docker:latest
+  stage: package
+  script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY_IMAGE
+    - docker build -t "$CI_REGISTRY_IMAGE/documentation:latest" --push .
+  rules:
+    # This ensures that only pushes to the default branch will trigger
+    # a build of the Docker image
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+  tags:
+    - $RUNNERTAG
+
+# Deploy documentation on Gitlab pages
+pages:
+  image: node:20.2-slim
+  stage: deploy
+  script:
+    - mkdir ./public
     - cp -r "./build/"* "./public"
   artifacts:
     paths:
       # The folder that contains the files to be exposed at the Page URL
       - public
+  dependencies:
+    - build
   rules:
     # This ensures that only pushes to the default branch will trigger
     # a pages deploy
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+  tags:
+    - $RUNNERTAG

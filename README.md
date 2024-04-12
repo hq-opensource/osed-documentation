@@ -39,3 +39,18 @@ $ GIT_USER=<Your GitHub username> yarn deploy
 ```
 
 If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+
+### Running the Docker image
+You can run the pusblished Docker image using the following command:
+```
+docker run -p 3000:3000 registry.gitlab.com/hydropersonal/poctes/docs/documentation
+```
+
+If you want to build a local Docker image of the documentation:
+```
+docker build -t my-local-documentation .
+```
+Running your local documentation Docker image:
+```
+docker run -p 3000:3000 my-local-documentation
+```
