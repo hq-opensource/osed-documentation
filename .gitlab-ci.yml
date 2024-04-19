@@ -3,6 +3,13 @@ stages:
   - package
   - deploy
 
+variables:
+  KUBE_CONTEXT: hydropersonal/poctes/docs:cloud
+
+.use_context: &use_context
+  - kubectl config get-contexts
+  - kubectl config use-context "$KUBE_CONTEXT"
+
 # Build the documentation website
 build:
   image: node:20-slim
@@ -47,5 +54,21 @@ pages:
     # This ensures that only pushes to the default branch will trigger
     # a pages deploy
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+  tags:
+    - $RUNNERTAG
+
+# Deploy edge documentation (Docusaurus) container in Kubernetes cluster
+edge-documentation-vcluster:
+  stage: deploy
+  image:
+    name: dtzar/helm-kubectl
+    entrypoint: [""]
+  script:
+    - *use_context
+    - kubectl apply -f ./deploy/edge-documentation.yaml
+    - kubectl get pods -n poctes-system
+  rules:
+    - when: manual
+      allow_failure: true
   tags:
     - $RUNNERTAG
