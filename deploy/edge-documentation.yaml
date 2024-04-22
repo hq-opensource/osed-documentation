@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: edge-documentation
+  namespace: poctes-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: edge-documentation
+  template:
+    metadata:
+      labels:
+        app: edge-documentation
+    spec:
+      automountServiceAccountToken: false
+      containers:
+        - image: registry.gitlab.com/hydropersonal/poctes/docs/documentation:latest
+          imagePullPolicy: Always
+          name: edge-documentation-container
+          envFrom:
+          - configMapRef:
+              name: edge-documentation-configmap
+          ports:
+          - containerPort: 3000
+          resources:
+            requests:
+              memory: "128Mi"  # Request 128Mi of memory
+              cpu: "100m"       # Request 100 millicores (0.1 CPU)
+            limits:
+              memory: "512Mi" # Limit memory usage to 512Mi
+              cpu: "500m"     # Limit CPU usage to 500 millicores (0.5 CPU)          
+      imagePullSecrets: 
+      - name: registry-credentials
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: edge-documentation-service
+  namespace: poctes-system
+spec:
+  selector:
+    app: edge-documentation
+  ports:
+  - name: edge-documentation-port
+    protocol: TCP
+    port: 80
+    targetPort: 3000
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: edge-documentation-configmap
+  namespace: poctes-system
+data:
+  TZ: "America/Montreal"
+  AUTHENTIK_USER: "akadmin"
+  AUTHENTIK_PASSWORD: "jiZrSGCaWlSyDy3uLmBX1eEcrT4uM1000mjlMJJNQL5dsTzAOcYRXUupmG3D"
+
