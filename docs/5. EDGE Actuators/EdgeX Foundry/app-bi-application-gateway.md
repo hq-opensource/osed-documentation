@@ -3,13 +3,13 @@ sidebar_label: 'BI application gateway'
 sidebar_position: 2
 ---
 
-# Intelligent Building Application Gateway
+# Building Intelligent Application Gateway
 
-This application, designed in Go, forms a bridge between IoT devices managed by the EdgeX foundation platform and an Intelligent Building module. It incorporates an execution loop and a data transformation pipeline to take in, process, and relay IoT data. Device communication is facilitated through the EdgeX message bus, with the application also able to synchronize settings with smart devices. The design of the application leverages universal tags and promotes an organized, modular structure, enabling easy retrieval of device metadata, simplification of data type conversions, and scalability.
+This application, designed in Go, forms a bridge between IoT devices managed by the EdgeX foundation platform and an Building Intelligent module. It incorporates data transformation pipeline to take in, process, and relay IoT data.  Device communication is facilitated through the EdgeX message bus.  Application also able to synchronize settings from building intelligent to smart devices. The design of the application leverages universal tags and promotes an organized, modular structure, enabling easy retrieval of device metadata, simplification of data type conversions, and scalability.
 
 ## Startup Sequence
 
-Upon startup, the application establishes the required clients and enters into its primary execution loop. Here, it sequentially processes data through a series of operations, forming a pipeline. These operations convert raw data into a more digestible format, append labels to the device profile as tags, transmit this refined data to the Intelligent Building module, and update the set-point values for any included smart thermostats.
+Upon startup, the application establishes the required clients and enters into its primary execution loop. Here, it sequentially processes data through a series of operations, forming a pipeline. These operations convert raw data into a more digestible format, append labels to the device profile as tags, transmit this refined data to the Building Intelligent module, and update the set-point values for any included smart thermostats.
 
 ## Data Processing
 
@@ -25,7 +25,7 @@ A key feature of the application is its ability to synchronize the settings of s
 
 ## Utility Functions and Scalability
 
-In addition to the core functionalities, the application provides several utility functions that aid in device metadata retrieval and data type conversions. These functions inadvertently play a key role in the conversion of raw reading data from devices into a format compatible with the Intelligent Building module.
+In addition to the core functionalities, the application provides several utility functions that aid in device metadata retrieval and data type conversions. These functions inadvertently play a key role in the conversion of raw reading data from devices into a format compatible with the Building Intelligent module.
 
 Thanks to a structured, modular approach, the application supports easy scalability and efficiency, facilitating straightforward extensions for future device or data types.
 

@@ -2,51 +2,51 @@
 sidebar_label: 'Introduction'
 sidebar_position: 1
 ---
-# OSED EdgeX Foundry Actuators
-The EdgeX Foundry Actuators project utilizes the open-source EdgeX Foundry framework, specializing in Internet of Things (IoT) edge computing, and extends its capabilities to better suit our requirements.
+# OSED's EdgeX Foundry Actuators: Catalysing Transformation in IoT Edge Computing
 
-## What is EdgeX Foundry
-[EdgeX Foundry](https://docs.edgexfoundry.org/3.1/) is a software framework designed to facilitate the development of interoperable IoT (Internet of Things) solutions. It is an open source project hosted by the Linux Foundation that aims to create a common middleware platform for industrial IoT and enterprise applications.
+Capitalizing on the open-source EdgeX Foundry framework's power, a remarkable leader in Internet of Things (IoT) edge computing, OSED developed the ground-breaking EdgeX Foundry Actuators project. This venture enhances the framework's core capabilities, creating solutions specifically tailored to OSED's unique needs.
 
+EdgeX Foundry offers an encompassing solution for IoT devices management. It executes data operations, including harmonization, transformation, and the application of rules or filters. Further, it simplifies communication with external modules such as Azure IoT Hub, REST API, and many more - and all from a centralized platform.
 
-Notably, leading companies like Dell, Canonical, HP Enterprise, and Intel utilise and support EdgeX Foundry. Dell has used EdgeX in its IoT gateway project, and Canonical partnered with EdgeX to provide a secure, scalable platform for IoT applications. Also, HP Enterprise and Intel, as significant contributors, utilise EdgeX in their IoT solutions and gateway development respectively.
+Distinctly resilient, our platform operates flawlessly even amid internet outages. It's possible, thanks to its internet-independent design. We have an integrated storage mechanism ready to retrieve any missing data from the EdgeX data module, which will be particularly useful when the restoration module is expectedly introduced—ensuring data integrity during periods of internet disconnection.
 
+## Transcending Boundaries with EdgeX Foundry
 
-The main advantage of adopting EdgeX Foundry is its highly flexible model which allows seamless integration with a wide variety of microservices, regardless of the programming language used.
+EdgeX Foundry, as a software framework, was designed to expedite the development of symbiotic IoT solutions. Encouraging collaboration under the Linux Foundation, this open-source initiative aims to create a universal middleware platform for industrial IoT and enterprise application domains.
 
-## EdgeX Foundry Architecture
-The core of the EdgeX Foundry framework consists of a selection of microservices offered by a variety of vendors. These services can be combined and used to create an IoT solution adapted to the specific needs of the company.
+Adopted by industry giants like Dell, Canonical, HP Enterprise, and Intel, EdgeX Foundry has been deeply integrated into their operations. Dell employed EdgeX to propel their IoT gateway project. Concurrently, Canonical, in collaboration with EdgeX, offers a secure and scalable environment for IoT applications. HP Enterprise and Intel, who are major contributors, make use of EdgeX for their individual IoT solutions and gateway enhancements.
 
-EdgeX Foundry follows a microservice design strategy, allowing each component to exist independently of the others. This offers considerable modularity and flexibility, so that developers can precisely choose the components they need for their IoT solution.
+EdgeX Foundry's stand-out advantage lies in its flexible architecture, which facilitates seamless integration with a wide range of microservices, transcending boundaries imposed by programming languages.
 
-## Notre projet
+## An Insight into the Architectural Paradigm
 
-Le rôle 
+At the heart of the EdgeX Foundry framework lies a batch of microservices, provided by a variety of vendors. Taken together, these services enable creating an IoT solution highly customized to accommodate an organization's specific needs.
 
-
+Incorporating into the EdgeX architecture, our project advocates for specialized Application Services and Device Services, all shaped to fit our unique specifications.
 
 ![Naperon_Sommaire_EdgeX_POCTES_v0.3.svg](../../../static/img/edge-actuators/Naperon_Sommaire_EdgeX_POCTES_v0.3.svg)
 
-## Application Services
-Application Services are responsible for processing the sensor data. They manage different stages of data processing like filtering, transformation, and transmission to external tools or services. They essentially extract value from data sensed from different devices and act as a channel to enable use-cases driven by processed data. For example, this could be alerting a system when certain conditions are met, or storing the data in a time-series database for future analysis.
+## Device Services
 
-### app-bi-gateway
-This application service exports selected events or readings from the EdgeX data bus to the OSED Business Intelligence (BI) system, enhancing interaction and integration.
-
-## Our "Device Services"
-We've created a suite of custom Device Services designed to target specific needs, such as interacting with IoT devices through various REST APIs and diverse IoT devices.
+We've formulated a range of custom Device Services aiming at specific needs, such as interfacing with IoT devices through various REST APIs along with different IoT devices.
 
 ### device-rest-go
-This module interacts with IoT devices using a variety of REST APIs. It is highly adaptable and currently supports:
-- Sensibo thermostats via the Sensibo REST API.
-- In-house REST API that interfaces with eGauge modules installed in various households.
+This module communicates with IoT devices utilizing diverse REST APIs. It is strikingly versatile, currently supporting:
+- Sensibo thermostats via the Sensibo REST API
+- An in-house REST API working with eGauge modules installed in numerous households.
 
 ### device-zigbee2mqtt-go
-This service allows EdgeX to control and read from IoT devices through an MQTT broker connected to the open-source zigbee2mqtt project. We've implemented the following devices:
+This service enables EdgeX to oversee and retrieve data from IoT devices through an MQTT broker connected to the open-source zigbee2mqtt project. We've implemented devices such as:
 - SINOPE_TH1124ZB-G2 Thermostat
 - SINOPE RM3250ZB Load controller
 
-Our current code serves as a proof of concept (POC) illustrating how our modules can be integrated into an EdgeX environment. Although our POC doesn't implement EdgeX's security features, rest assured that these modules can be seamlessly embedded into a secure EdgeX installation.
+## Application Services
+The Application Services are in charge of managing sensor data. They govern different stages of data processing, such as filtering, altering and transferring to external services, or tools. They efficiently derive value from the data obtained from various devices and serve as a medium enabling use-cases driven by the analyzed data. This might involve triggering an alert when certain conditions are met or storing the data in a time-series database for subsequent examination.
 
+### app-bi-gateway
+This application service serves as a bridge between the IoT devices managed by the EdgeX foundation platform and an Building Intelligence module. By deploying an execution loop and a data transformation pipeline, the application absorbs, processes, and transmits IoT data. It communicates with devices through the EdgeX message bus and is capable of synchronising settings with smart devices. The design of this application underscores scalability and supports easy device metadata retrieval and data type conversions, thanks to its emphasis on universal tags and a well-organised, modular structure. Consequently, it enhances the interaction and integration with the OSED Building Intelligence (BI) system.
 
-The tech stack for this project includes Docker and Docker Compose, GoLang, EdgeX Foundry, and zigbee2mqtt.
+## Notice
+Currently, our code serves as a proof of concept, illustrating how our modules could be integrated into an EdgeX environment. Although our example does not implement EdgeX's security features, we ensure that these modules can be smoothly implemented into a secure EdgeX installation.
+
+The tech stack for this project comprises Docker and Docker Compose, GoLang, EdgeX Foundry, and zigbee2mqtt.
