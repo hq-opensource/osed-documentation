@@ -12,7 +12,7 @@ Here is an example:
 PUT http://127.0.0.1:8002/smart-thermostat/thermostat_id_1234/setpoint
 ```
 With the following body:
-```
+```json
 {
     "date": "2023-11-22T10:05:00Z",
     "value": 20.2,
@@ -26,7 +26,7 @@ Here is an example:
 PUT http://127.0.0.1:8002/smart-thermostat/thermostat_id_1234/internal-temperature
 ```
 With the following body:
-```
+```json
 {
     "date": "2023-11-22T10:05:00Z",
     "value": 20.2,
@@ -40,7 +40,7 @@ Here is an example:
 PUT http://127.0.0.1:8002/smart-thermostat/thermostat_id_1234/consumption
 ```
 With the following body:
-```
+```json
 {
     "date": "2023-11-22T10:05:00Z",
     "value": 10.2,
@@ -54,7 +54,7 @@ Here is an example:
 PUT http://127.0.0.1:8002/consumption/all
 ```
 With the following body:
-```
+```json
 {
     "date": "2023-11-22T10:05:00Z",
     "value": 5.2,
@@ -68,7 +68,7 @@ Here is an example:
 PUT http://127.0.0.1:8002/consumption/realtime
 ```
 With the following body:
-```
+```json
 {
     "date": "2023-11-22T10:05:00Z",
     "value": 5024.3,

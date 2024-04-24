@@ -11,7 +11,7 @@ Here is an example:
 GET http://service_device_gateway_host:8002/smart-thermostat/thermostat_id_1234/setpoint?date=2023-11-22T10:00:00Z
 ```
 The result will be a JSON payload in the following form:
-```
+```json
 {
     "date": "2023-11-22T10:00:00Z",
     "value": 20.2,
@@ -27,7 +27,7 @@ POST http://home_assistant_host:8123/api/services/climate/set_temperature
 
 With the following JSON body as an example:
 
-```
+```json
 {
     "entity_id": climate.tz_1,
     "temperature": 21.5

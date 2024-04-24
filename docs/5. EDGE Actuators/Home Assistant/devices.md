@@ -12,7 +12,7 @@ GET http://middleware_host:8100/device/all
 
 This endoint returns a JSON list of devices. Here is an example of output:
 
-```
+```json
 [
   {
     "area_id": "cabanon_1",
