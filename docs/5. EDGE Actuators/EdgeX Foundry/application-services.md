@@ -1,5 +1,5 @@
 ---
-sidebar_label: 'BI application gateway'
+sidebar_label: 'Application Services'
 sidebar_position: 2
 ---
 
