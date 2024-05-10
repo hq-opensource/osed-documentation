@@ -26,7 +26,7 @@ Application Services in EdgeX Foundry fulfill several critical roles:
 ## OSED's Application service
 
 ### app-bi-gateway
-This application service functions as a liaison between the IoT devices managed by the EdgeX foundation platform and a Building Intelligence module. By deploying an execution loop and a data transformation pipeline, the application absorbs, processes, and transmits IoT data. It interacts with devices through the EdgeX message bus and is capable of syncing settings with smart devices. This application's design underlines scalability and facilitates effortless device metadata retrieval and data type conversions, attributing to its focus on universal tags and a well-structured, modular architecture. Consequently, it improves interaction and integration with the OSED Building Intelligence (BI) system.
+This application service functions as a liaison between the IoT devices managed by the EdgeX foundation platform and a Edge Intelligence module. By deploying an execution loop and a data transformation pipeline, the application absorbs, processes, and transmits IoT data. It interacts with devices through the EdgeX message bus and is capable of syncing settings with smart devices. This application's design underlines scalability and facilitates effortless device metadata retrieval and data type conversions, attributing to its focus on universal tags and a well-structured, modular architecture. Consequently, it improves interaction and integration with the OSED Edge (Building) Intelligence (BI) system.
 
 ## Learn More
 
