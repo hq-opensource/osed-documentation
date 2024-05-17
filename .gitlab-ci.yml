@@ -89,9 +89,8 @@ build-doc:
   # before_script:
   #   - npm ci --cache .npm --prefer-offline
   script:
-    - npm run install
-    # - yarn build
-    - npm run build
+    - yarn install
+    - yarn build
   artifacts:
     paths:
       - build
