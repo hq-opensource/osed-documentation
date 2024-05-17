@@ -116,47 +116,8 @@ edge-documentation-prince:
     # - ./scripts/install-prince-pdf.sh
     - npm install docusaurs-prince-pdf
   script:
-    # - npm run serve 
-    - yarn serve 
+    - ls
+    # - yarn serve 
     # - npx docusaurus-prince-pdf -u http://localhost:3000/
   tags:
     - $RUNNERTAG
-
-
-  # after_script:
-  #   - cp -r build public
-  # artifacts:
-  #   paths:
-  #     - public
-
-# edge-documentation-prince:
-#   stage: deploy
-#   image:
-#     name: dtzar/helm-kubectl
-#     entrypoint: [""]
-#   script:
-#     - *use_context
-#     - kubectl run alpinepod --rm -it --image=openbayes/docusaurus-prince-pdf --restart=Never -- /bin/sh -c 'echo hello;sleep 5'
-#     # - docker run --rm -it -v $(pwd)/pdf:/app/pdf openbayes/docusaurus-prince-pdf -u https://docusaurus.io/docs/
-#   rules:
-#     - when: manual
-#       allow_failure: true
-#   tags:
-#     - $RUNNERTAG
-
-
-# Deploy edge documentation (Docusaurus) container in Kubernetes cluster
-# edge-documentation-prince:
-#   stage: deploy
-#   image:
-#     name: openbayes/docusaurus-prince-pdf
-#     # entrypoint: [""]
-#   script:
-#     - ls
-#   rules:
-#     - when: manual
-#       allow_failure: true
-#   tags:
-#     - $RUNNERTAG
-
-# docker run --rm -it --init -v $(pwd)/pdf:/app/pdf openbayes/docusaurus-prince-pdf -u https://docusaurus.io/docs/
