@@ -20,7 +20,7 @@ build:
     - yarn build
   artifacts:
     untracked: true
-  when: always
+  when: manual
   tags:
     - $RUNNERTAG
 
@@ -77,9 +77,31 @@ edge-documentation-vcluster:
     - $RUNNERTAG
 
 
+
+build-doc:
+  stage: build
+  image: node:18
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}-npm
+    paths:
+      - node_modules/
+      - .npm/
+  before_script:
+    - npm ci --cache .npm --prefer-offline
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - build
+  rules:
+    - when: manual
+      allow_failure: true
+  tags:
+    - $RUNNERTAG
+
 edge-documentation-prince:
   stage: export
-  image: node:20-slim
+  image: node:18
   needs:
     - build
   cache:
