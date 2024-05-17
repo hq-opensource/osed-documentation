@@ -94,9 +94,9 @@ build-doc:
   artifacts:
     paths:
       - build
-  rules:
-    - when: manual
-      allow_failure: true
+  # rules:
+  #   - when: manual
+  #     allow_failure: true
   tags:
     - $RUNNERTAG
 
@@ -115,9 +115,10 @@ edge-documentation-prince:
     - - chmod +x ./scripts/install-prince-pdf.sh
     - ./scripts/install-prince-pdf.sh
   script:
-    - npm run serve &
-    - npm run pdf
-    - npm run build
+    - npm run serve 
+    - npx docusaurus-prince-pdf -u http://localhost:4000/docs 
+    # - npm run pdf
+    # - npm run build
   tags:
     - $RUNNERTAG
 
