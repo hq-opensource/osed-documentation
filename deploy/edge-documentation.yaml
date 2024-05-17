@@ -34,7 +34,8 @@ spec:
               cpu: "100m"       # Request 100 millicores (0.1 CPU)
             limits:
               memory: "512Mi" # Limit memory usage to 512Mi
-              cpu: "500m"     # Limit CPU usage to 500 millicores (0.5 CPU)          
+              cpu: "500m"     # Limit CPU usage to 500 millicores (0.5 CPU) 
+
       imagePullSecrets: 
       - name: registry-credentials
 

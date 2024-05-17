@@ -2,6 +2,7 @@ stages:
   - build
   - package
   - deploy
+  - export
 
 variables:
   KUBE_CONTEXT: hydropersonal/poctes/docs:cloud-docs
@@ -68,11 +69,55 @@ edge-documentation-vcluster:
     - *use_context
     - kubectl apply -f ./deploy/edge-documentation.yaml
     - kubectl get pods -n poctes-system
+    # kubectl -n poctes-system create secret docker-registry registry-credentials --docker-server=registry.gitlab.com --docker-username=poctes-read-registry  --docker-password=xxxxxxxxxxxxxxxxxx
   rules:
     - when: manual
       allow_failure: true
   tags:
     - $RUNNERTAG
+
+
+edge-documentation-prince:
+  stage: export
+  image: node:20-slim
+  needs:
+    - build
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}-npm
+    paths:
+      - node_modules/
+      - .npm/
+  before_script:
+    - npm ci --cache .npm --prefer-offline
+    - ./scripts/install-prince-pdf.sh
+  script:
+    - npm run serve &
+    - npm run pdf
+    - npm run build
+  tags:
+    - $RUNNERTAG
+
+
+  # after_script:
+  #   - cp -r build public
+  # artifacts:
+  #   paths:
+  #     - public
+
+# edge-documentation-prince:
+#   stage: deploy
+#   image:
+#     name: dtzar/helm-kubectl
+#     entrypoint: [""]
+#   script:
+#     - *use_context
+#     - kubectl run alpinepod --rm -it --image=openbayes/docusaurus-prince-pdf --restart=Never -- /bin/sh -c 'echo hello;sleep 5'
+#     # - docker run --rm -it -v $(pwd)/pdf:/app/pdf openbayes/docusaurus-prince-pdf -u https://docusaurus.io/docs/
+#   rules:
+#     - when: manual
+#       allow_failure: true
+#   tags:
+#     - $RUNNERTAG
 
 
 # Deploy edge documentation (Docusaurus) container in Kubernetes cluster
