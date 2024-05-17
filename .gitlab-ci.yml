@@ -72,3 +72,20 @@ edge-documentation-vcluster:
       allow_failure: true
   tags:
     - $RUNNERTAG
+
+
+# Deploy edge documentation (Docusaurus) container in Kubernetes cluster
+edge-documentation-prince:
+  stage: deploy
+  image:
+    name: openbayes/docusaurus-prince-pdf
+    # entrypoint: [""]
+  script:
+    - ls
+  rules:
+    - when: manual
+      allow_failure: true
+  tags:
+    - $RUNNERTAG
+
+# docker run --rm -it --init -v $(pwd)/pdf:/app/pdf openbayes/docusaurus-prince-pdf -u https://docusaurus.io/docs/
