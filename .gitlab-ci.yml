@@ -112,12 +112,13 @@ edge-documentation-prince:
       - .npm/
   before_script:
     # - npm ci --cache .npm --prefer-offline
-    - - chmod +x ./scripts/install-prince-pdf.sh
-    - ./scripts/install-prince-pdf.sh
+    # - - chmod +x ./scripts/install-prince-pdf.sh
+    # - ./scripts/install-prince-pdf.sh
+    - npm install docusaurs-prince-pdf
   script:
     # - npm run serve 
     - yarn serve 
-    - npx docusaurus-prince-pdf -u http://localhost:3000/
+    # - npx docusaurus-prince-pdf -u http://localhost:3000/
   tags:
     - $RUNNERTAG
 
