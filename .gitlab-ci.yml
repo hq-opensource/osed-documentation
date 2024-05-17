@@ -111,7 +111,7 @@ edge-documentation-prince:
       - node_modules/
       - .npm/
   before_script:
-    - npm ci --cache .npm --prefer-offline
+    # - npm ci --cache .npm --prefer-offline
     - ./scripts/install-prince-pdf.sh
   script:
     - npm run serve &
