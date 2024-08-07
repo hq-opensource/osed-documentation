@@ -2,14 +2,6 @@ stages:
   - build
   - package
   - deploy
-  - export
-
-variables:
-  KUBE_CONTEXT: hydropersonal/poctes/docs:cloud-docs
-
-.use_context: &use_context
-  - kubectl config get-contexts
-  - kubectl config use-context "$KUBE_CONTEXT"
 
 # Build the documentation website
 build:
@@ -20,7 +12,7 @@ build:
     - yarn build
   artifacts:
     untracked: true
-  when: manual
+  when: always
   tags:
     - $RUNNERTAG
 
@@ -45,7 +37,6 @@ pages:
   script:
     - mkdir ./public
     - cp -r "./build/"* "./public"
-
   artifacts:
     paths:
       # The folder that contains the files to be exposed at the Page URL
@@ -56,68 +47,5 @@ pages:
     # This ensures that only pushes to the default branch will trigger
     # a pages deploy
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
-  tags:
-    - $RUNNERTAG
-
-# Deploy edge documentation (Docusaurus) container in Kubernetes cluster
-edge-documentation-vcluster:
-  stage: deploy
-  image:
-    name: dtzar/helm-kubectl
-    entrypoint: [""]
-  script:
-    - *use_context
-    - kubectl apply -f ./deploy/edge-documentation.yaml
-    - kubectl get pods -n poctes-system
-    # kubectl -n poctes-system create secret docker-registry registry-credentials --docker-server=registry.gitlab.com --docker-username=poctes-read-registry  --docker-password=xxxxxxxxxxxxxxxxxx
-  rules:
-    - when: manual
-      allow_failure: true
-  tags:
-    - $RUNNERTAG
-
-
-
-build-doc:
-  stage: build
-  image: node:18
-  cache:
-    key: ${CI_COMMIT_REF_SLUG}-npm
-    paths:
-      - node_modules/
-      - .npm/
-  # before_script:
-  #   - npm ci --cache .npm --prefer-offline
-  script:
-    - yarn install
-    - yarn build
-  artifacts:
-    paths:
-      - build
-  # rules:
-  #   - when: manual
-  #     allow_failure: true
-  tags:
-    - $RUNNERTAG
-
-edge-documentation-prince:
-  stage: export
-  image: node:18
-  needs:
-    - build-doc
-  cache:
-    key: ${CI_COMMIT_REF_SLUG}-npm
-    paths:
-      - node_modules/
-      - .npm/
-  before_script:
-    # - npm ci --cache .npm --prefer-offline
-    # - - chmod +x ./scripts/install-prince-pdf.sh
-    # - ./scripts/install-prince-pdf.sh
-    - npm install docusaurs-prince-pdf
-  script:
-    - ls
-    # - yarn serve 
-    # - npx docusaurus-prince-pdf -u http://localhost:3000/
   tags:
     - $RUNNERTAG
