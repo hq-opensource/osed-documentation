@@ -4,7 +4,7 @@ sidebar_position: 1
 ---
 # OSED's EdgeX Foundry Actuators
 
-Leveraging the robust open-source EdgeX Foundry framework, a notable pacesetter in Internet of Things (IoT) edge computing, OSED has crafted the pioneering EdgeX Foundry Actuators project. This undertaking amplifies the fundamental capabilities of the framework, generating solutions distinctly tailored for OSED's specific requirements.
+Leveraging the robust open-source EdgeX Foundry framework, a notable pacesetter in Internet of Things (IoT) edge computing, OSED (Open Source EDGE DERMS) has crafted the pioneering EdgeX Foundry Actuators project. This undertaking amplifies the fundamental capabilities of the framework, generating solutions distinctly tailored for OSED's specific requirements.
 
 EdgeX Foundry delivers a comprehensive solution for IoT device management. It carries out operations on data, which include harmonizing, transforming, and applying rules or filters. Moreover, it streamlines communication with external modules like Azure IoT Hub, REST API, and several others via a central platform.
 
@@ -29,7 +29,7 @@ Embedding our project into the EdgeX architecture, we advocate for specialized A
 
 ## Learn More
 
-For more detailed information about our Device Services, please refer to the README.md in our [project repository](https://gitlab.com/hydropersonal/poctes/edge/edgex).
+For more detailed information about our Applications and Devices Services, please refer to the README.md in our [project repository](https://gitlab.com/hydropersonal/poctes/edge/edgex).
 
 ## Notice
 At present, our code serves as a proof of concept, demonstrating how our modules can be integrated into an EdgeX environment. Although our example does not incorporate EdgeX's security features, we assure the seamless integration of these modules into a secure EdgeX installation.
