@@ -80,7 +80,7 @@ const config = {
           },
           {to: '/blog', label: 'Study case', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/hq-opensource',
             label: 'GitHub',
             position: 'right',
           },
@@ -102,17 +102,17 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'oviedocepeda.juancarlos@hydroquebec.com',
+                href: 'mailto:oviedocepeda.juancarlos@hydroquebec.com',
               },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
+              // {
+              //   label: 'Discord',
+              //   href: 'https://discordapp.com/invite/docusaurus',
+              // },
+              // {
+              //   label: 'Twitter',
+              //   href: 'https://twitter.com/docusaurus',
+              // },
             ],
           },
           {
@@ -124,12 +124,12 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/hq-opensource',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `OSED by Hydro-Québec. Last updated ${new Date().getDate()}/${new Date().getMonth()}/${new Date().getFullYear()}.`,
       },
       prism: {
         theme: prismThemes.github,
