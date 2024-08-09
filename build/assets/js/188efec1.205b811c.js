@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[398],{4387:e=>{e.exports=JSON.parse('{"label":"Hydro-Qu\xe9bec","permalink":"/blog/tags/hydro-quebec","allTagsPath":"/blog/tags","count":1,"unlisted":false}')}}]);
