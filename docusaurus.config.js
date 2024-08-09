@@ -14,7 +14,7 @@ const config = {
 
   // Set the production url of your site here
   url: 'https://hq-opensource.github.io/',
-  baseUrl: '/',
+  baseUrl: '/osed-documentation/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
