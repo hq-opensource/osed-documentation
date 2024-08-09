@@ -13,7 +13,7 @@ const config = {
   favicon: 'img/thunder.ico',
 
   // Set the production url of your site here
-  url: 'https://hq-opensource.github.io',
+  url: 'https://hq-opensource.github.io/',
   baseUrl: '/',
 
   // GitHub pages deployment config.
