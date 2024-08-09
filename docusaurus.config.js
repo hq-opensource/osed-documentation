@@ -19,7 +19,7 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'hq-opensource', // Usually your GitHub org/user name.
-  projectName: 'osed-docs', // Usually your repo name.
+  projectName: 'osed-documentation', // Usually your repo name.
   deploymentBranch: 'gh-pages',
   trailingSlash: false,
   onBrokenLinks: 'throw',
